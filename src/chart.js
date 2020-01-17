@@ -10,7 +10,11 @@ export default class extends Component {
 
     componentDidMount() {
         this.tree = new OrgChart(this.refs.tree , {
-            nodes: this.props.nodes
+            nodes: this.props.nodes,
+            nodeBinding: {
+                field_0: "name",
+                field_1: "title"
+            }
         });
     }
 
