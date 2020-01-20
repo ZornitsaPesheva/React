@@ -4,11 +4,19 @@ import OrgChart from '@balkangraph/orgchart.js/orgchart';
 
 export default class extends Component {
 
+    constructor(props) {
+        super(props);
+
+        this.state = { visible: false };
+    }
+
     shouldComponentUpdate() {
         return false;
     }
 
     componentDidMount() {
+        let that = this;
+
         this.chart = new OrgChart(this.refs.tree , {
             nodes: this.props.nodes,
 
@@ -18,8 +26,9 @@ export default class extends Component {
             }
         });
         
+
         this.chart.on('click', function (sender, node) {
-            alert("alert");
+            alert(that.state.visible);
          });  
     
         this.chart.load(this.props.nodes);
